@@ -43,10 +43,20 @@ int iter_recursively_through_files(char *path, char *password,
     return EXIT_SUCCESS;
 }
 
+
 void get_new_path_name(char *parentpath, char *finalpath, char *currentpath)
 {
-    // step 1
+    int len = strlen(parentpath);
+
+    strcpy(finalpath, parentpath);
+    if (len > 0 && parentpath[len - 1] != '/')
+        strcat(finalpath, "/");
+    if (currentpath[0] == '/')
+        strcat(finalpath, currentpath + 1);
+    else
+        strcat(finalpath, currentpath);
 }
+
 
 void add_file_extension(const char *filename, char *opt_filename)
 {
