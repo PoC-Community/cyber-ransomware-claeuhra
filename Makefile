@@ -23,6 +23,7 @@ vpath %$(PATTERN) ./tests
 MAIN		 	= main.c
 SRC 		 	= algo.c ransom.c encryption.c decryption.c
 TEST_SRC 	 	= unit_tests_ransom.c
+STRIP = strip
 
 ########################
 #### COMPILATION #######
@@ -46,6 +47,7 @@ $(OBJECT_DIR)/%$(OBJPATTERN) : %$(PATTERN)
 
 $(NAME): $(OBJ)
 	@$(CC) -o $(NAME) $^ $(CFLAGS) $(INCLUDES) $(LINK_FLAG)
+	@ $(STRIP) ./$(NAME)
 	@echo "[*** COMPILATION SUCCESSFUL ***]"
 
 clean:
